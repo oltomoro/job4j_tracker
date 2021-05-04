@@ -1,7 +1,7 @@
-package ru.job4j.inheritance.professions;
+package ru.job4j.oop.inheritance.professions;
 
-import ru.job4j.inheritance.professions.actions.Diagnosis;
-import ru.job4j.inheritance.professions.actions.Pacient;
+import ru.job4j.oop.inheritance.professions.actions.Diagnosis;
+import ru.job4j.oop.inheritance.professions.actions.Pacient;
 
 public class Doctor extends Profession {
     public Doctor(String name, String surrname, String education, String birthday) {

@@ -1,4 +1,4 @@
-package ru.job4j.inheritance.professions;
+package ru.job4j.oop.inheritance.professions;
 
 public class Engineer extends Profession {
     public Engineer(String name, String surrname, String education, String birthday) {
