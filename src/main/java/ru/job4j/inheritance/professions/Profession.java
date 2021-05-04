@@ -1,4 +1,4 @@
-package ru.job4j.professions;
+package ru.job4j.inheritance.professions;
 
 public class Profession {
     private String name;

@@ -1,6 +1,6 @@
-package ru.job4j.professions;
+package ru.job4j.inheritance.professions;
 
-import ru.job4j.professions.actions.Application;
+import ru.job4j.inheritance.professions.actions.Application;
 
 public class Programmer extends Engineer {
     private boolean isDrunk;
