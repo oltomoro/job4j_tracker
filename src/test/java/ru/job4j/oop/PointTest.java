@@ -26,8 +26,8 @@ public class PointTest {
 
     @Test
     public void WhenFirstPoint010AndSecondPoint011(){
-        Point a = new Point(0, 1);
-        Point b = new Point(1, 1);
+        Point a = new Point(0, 1, 0);
+        Point b = new Point(0, 1, 1);
         double result = a.distance3d(b);
         double expected = 1.0;
         Assert.assertThat(result, is(expected));
