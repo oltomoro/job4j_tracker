@@ -19,8 +19,8 @@ public class Library {
             System.out.println("Book name: \"" + books[i].getName() + "\", Page count: \"" + books[i].getPages() + "\"");
         }
         System.out.println("Show Clean code");
-        for (int i = 0; i < 4; i++) {
-            if (books[i].getName().equals("Clean code")) {
+        for (int i = 0; i < books.length; i++) {
+            if ("Clean code".equals(books[i].getName())) {
                 System.out.println("Book name: \"" + books[i].getName() + "\", Page count: \"" + books[i].getPages() + "\"");
             }
         }
