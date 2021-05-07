@@ -8,14 +8,14 @@ public class Library {
         Book fourth = new Book("Bukvar", 50);
         Book[] books = {first, second, third, fourth};
         System.out.println("Add books");
-        for (int i = 0; i < 4; i++) {
+        for (int i = 0; i < books.length; i++) {
             System.out.println("Book name: \"" + books[i].getName() + "\", Page count: \"" + books[i].getPages() + "\"");
         }
         System.out.println("Replace books");
         Book tmp = books[0];
         books[0] = books[3];
         books[3] = tmp;
-        for (int i = 0; i < 4; i++) {
+        for (int i = 0; i < books.length; i++) {
             System.out.println("Book name: \"" + books[i].getName() + "\", Page count: \"" + books[i].getPages() + "\"");
         }
         System.out.println("Show Clean code");
