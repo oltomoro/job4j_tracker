@@ -42,15 +42,8 @@ public class Tracker {
      * @return объект найденной заявки, если ничего не найдено, то null
      */
     public Item findById(int id) {
-        Item rsl = null;
-        for (int index = 0; index < size; index++) {
-            Item item = items[index];
-            if (item.getId() == id) {
-                rsl = item;
-                break;
-            }
-        }
-        return rsl;
+        int index = indexOf(id);
+        return index != -1 ? this.items[index] : null;
     }
 
     /**
@@ -78,4 +71,38 @@ public class Tracker {
         }
         return Arrays.copyOfRange(this.items, 0, index);
     }
+
+    /**
+     * Заменяет заявку на переданную
+     * @param id - id заявки которую нужно заменить
+     * @param item новая заявка
+     * @return результат выполнения замены
+     */
+    public boolean replace(int id, Item item) {
+        int index = indexOf(id);
+        boolean result = false;
+        if (index != -1){
+            item.setId(id);
+            this.items[index] = item;
+            result = true;
+        }
+        return result;
+    }
+
+    /**
+     * Находит позицию в массиве заявок по id заявки
+     * @param id заявки позицию которой нужно найти
+     * @return позиция заявки в массиве
+     */
+    private int indexOf(int id) {
+        int rsl = -1;
+        for (int index = 0; index < size; index++) {
+            if (items[index].getId() == id) {
+                rsl = index;
+                break;
+            }
+        }
+        return rsl;
+    }
+
 }
