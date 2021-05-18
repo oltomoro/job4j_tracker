@@ -30,12 +30,8 @@ public class Tracker {
      * @return заявка
      */
     public Item add(Item item) {
-        if (size < ITEMS_COUNT) {
-            item.setId(ids++);
-            items[size++] = item;
-        } else {
-            throw new ArrayIndexOutOfBoundsException(String.format("Превышено максимальное количество заявок (%s шт.)", ITEMS_COUNT));
-        }
+        item.setId(ids++);
+        items[size++] = item;
         return item;
     }
 
@@ -63,14 +59,7 @@ public class Tracker {
      * @return массив найденных заявок
      */
     public Item[] findAll() {
-        int index = 0;
-        for (int i = 0; i < this.items.length; i++) {
-            if (this.items[i] == null) {
-                index = i;
-                break;
-            }
-        }
-        return Arrays.copyOfRange(this.items, 0, index);
+        return Arrays.copyOf(items, size);
     }
 
     /**
@@ -78,14 +67,15 @@ public class Tracker {
      *
      * @return массив найденных заявок
      */
-    public Item[] findByName(String name){
+    public Item[] findByName(String name) {
         int index = 0;
-        for (int i = 0; i < this.items.length; i++) {
+        Item[] result = new Item[size];
+        for (int i = 0; i < size; i++) {
             if (this.items[i].getName().equals(name)) {
-                index = i;
-                break;
+                result[index] = this.items[i];
+                index++;
             }
         }
-        return Arrays.copyOfRange(this.items, 0, index + 1);
+        return Arrays.copyOfRange(this.items, 0, index);
     }
 }
