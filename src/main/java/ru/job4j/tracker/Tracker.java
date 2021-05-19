@@ -74,14 +74,15 @@ public class Tracker {
 
     /**
      * Заменяет заявку на переданную
-     * @param id - id заявки которую нужно заменить
+     *
+     * @param id   - id заявки которую нужно заменить
      * @param item новая заявка
      * @return результат выполнения замены
      */
     public boolean replace(int id, Item item) {
         int index = indexOf(id);
         boolean result = false;
-        if (index != -1){
+        if (index != -1) {
             item.setId(id);
             this.items[index] = item;
             result = true;
@@ -90,7 +91,24 @@ public class Tracker {
     }
 
     /**
+     * Удаляет элемент из массива, смещая отстальные элементы вправо
+     *
+     * @param id - id удаляемой заявки
+     * @return результат выполнения удаления
+     */
+    public boolean delete(int id) {
+        boolean result = false;
+        int index = indexOf(id);
+        this.items[index] = null;
+        System.arraycopy(this.items, index + 1, this.items, index, size - index);
+        this.items[this.items.length - 1] = null;
+        size--;
+        return result;
+    }
+
+    /**
      * Находит позицию в массиве заявок по id заявки
+     *
      * @param id заявки позицию которой нужно найти
      * @return позиция заявки в массиве
      */
