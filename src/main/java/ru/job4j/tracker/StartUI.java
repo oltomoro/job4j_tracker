@@ -14,8 +14,6 @@ public class StartUI {
         Tracker tracker = new Tracker();
         tracker.add(item);
         Item foundItem = tracker.findById(1);
-        System.out.println("Id заявки: " + foundItem.getId());
-        System.out.println("Имя заявки: " + foundItem.getName());
-        System.out.println("Дата создания заявки: " + foundItem.getCreated());
+        System.out.println(foundItem);
     }
 }
