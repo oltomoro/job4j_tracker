@@ -6,7 +6,7 @@ public class Tracker {
     /**
      * Максимальное количество заявок в трекере
      */
-    private final int ITEMS_COUNT = 100;
+    private final int ITEMS_COUNT = 3;
 
     /**
      * Массив содержащий в себе все заявки
@@ -101,8 +101,8 @@ public class Tracker {
         int index = indexOf(id);
         if (index != -1) {
             this.items[index] = null;
-            System.arraycopy(this.items, index + 1, this.items, index, size - index);
-            this.items[this.items.length - 1] = null;
+            System.arraycopy(this.items, index + 1, this.items, index, size - index - 1);
+            this.items[size - 1] = null;
             size--;
             result = true;
         }
