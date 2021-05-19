@@ -81,11 +81,10 @@ public class Tracker {
      */
     public boolean replace(int id, Item item) {
         int index = indexOf(id);
-        boolean result = false;
-        if (index != -1) {
+        boolean result = index != -1;
+        if (result) {
             item.setId(id);
             this.items[index] = item;
-            result = true;
         }
         return result;
     }
@@ -97,14 +96,13 @@ public class Tracker {
      * @return результат выполнения удаления
      */
     public boolean delete(int id) {
-        boolean result = false;
         int index = indexOf(id);
-        if (index != -1) {
+        boolean result = index != -1;
+        if (result) {
             this.items[index] = null;
             System.arraycopy(this.items, index + 1, this.items, index, size - index - 1);
             this.items[size - 1] = null;
             size--;
-            result = true;
         }
         return result;
     }
