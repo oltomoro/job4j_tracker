@@ -99,10 +99,13 @@ public class Tracker {
     public boolean delete(int id) {
         boolean result = false;
         int index = indexOf(id);
-        this.items[index] = null;
-        System.arraycopy(this.items, index + 1, this.items, index, size - index);
-        this.items[this.items.length - 1] = null;
-        size--;
+        if (index != -1) {
+            this.items[index] = null;
+            System.arraycopy(this.items, index + 1, this.items, index, size - index);
+            this.items[this.items.length - 1] = null;
+            size--;
+            result = true;
+        }
         return result;
     }
 
