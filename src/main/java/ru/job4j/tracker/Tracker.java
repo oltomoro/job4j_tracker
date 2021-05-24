@@ -6,7 +6,7 @@ public class Tracker {
     /**
      * Максимальное количество заявок в трекере
      */
-    private final int ITEMS_COUNT = 3;
+    private final int ITEMS_COUNT = 100;
 
     /**
      * Массив содержащий в себе все заявки
