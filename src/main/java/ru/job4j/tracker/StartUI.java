@@ -15,7 +15,7 @@ public class StartUI {
         while (run) {
             this.showMenu();
             int question = Integer.parseInt(scanner.nextLine());
-            if (0 == question) {
+            if (question == 0) {
                 printHeader("Добавление новой задачи");
                 System.out.println("Введите название новой задачи:");
                 String name = scanner.nextLine();
@@ -23,7 +23,7 @@ public class StartUI {
                 item.setName(name);
                 tracker.add(item);
                 printHeader(String.format("Задача добавлена: %s", item));
-            } else if (1 == question) {
+            } else if (question == 1) {
                 printHeader("Список найденных задач");
                 Item[] items = tracker.findAll();
                 if (items.length > 0) {
@@ -33,7 +33,7 @@ public class StartUI {
                 } else {
                     printHeader("Задачи не найдены");
                 }
-            } else if (2 == question) {
+            } else if (question == 2) {
                 printHeader("Редактирование задачи");
                 System.out.println("Введите id задачи (чтобы узнать id задачи воспользуйтесь пунктом меню 1):");
                 int id = Integer.parseInt(scanner.nextLine());
@@ -46,7 +46,7 @@ public class StartUI {
                     } else {
                         printHeader(String.format("Не удалось изменить задачу с id [%s]", id));
                     }
-            } else if (3 == question) {
+            } else if (question == 3) {
                 printHeader("Удаление задачи по id");
                 System.out.println("Введите id задачи для удаления:");
                 int id = Integer.parseInt(scanner.nextLine());
@@ -56,7 +56,7 @@ public class StartUI {
                         printHeader(String.format("Не удалось удалить задачу с id [%s]", id));
                     }
 
-            } else if (4 == question) {
+            } else if (question == 4) {
                 printHeader("Поиск задачи по id");
                 System.out.println("Введите id задачи для поиска:");
                 int id = Integer.parseInt(scanner.nextLine());
@@ -66,7 +66,7 @@ public class StartUI {
                 } else {
                     printHeader(String.format("Задача с id [%s] не найдена", id));
                 }
-            } else if (5 == question) {
+            } else if (question == 5) {
                 printHeader("Поиск задачи по названию");
                 System.out.println("Введите название задачи для поиска:");
                 String name = scanner.nextLine();
@@ -79,7 +79,7 @@ public class StartUI {
                 } else {
                     printHeader(String.format("Задача с названием [%s] не найдена", name));
                 }
-            } else if (6 == question) {
+            } else if (question == 6) {
                 break;
             } else {
                 printHeader("Номер не найден. Выберите номер из списка");
