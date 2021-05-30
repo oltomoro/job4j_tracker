@@ -69,7 +69,7 @@ public class Tracker {
                 index++;
             }
         }
-        return Arrays.copyOfRange(this.items, 0, index);
+        return Arrays.copyOfRange(result, 0, index);
     }
 
     /**
