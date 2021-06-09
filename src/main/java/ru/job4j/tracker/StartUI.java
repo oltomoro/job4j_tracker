@@ -1,24 +1,24 @@
 package ru.job4j.tracker;
 
-import java.util.Scanner;
+import ru.job4j.tracker.input.ConsoleInput;
+import ru.job4j.tracker.input.Input;
 
 public class StartUI {
 
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
+        Input consoleInput = new ConsoleInput();
         Tracker tracker = new Tracker();
-        new StartUI().init(scanner, tracker);
+        new StartUI().init(consoleInput, tracker);
     }
 
-    public void init(Scanner scanner, Tracker tracker) {
+    public void init(Input input, Tracker tracker) {
         boolean run = true;
         while (run) {
             this.showMenu();
-            int question = Integer.parseInt(scanner.nextLine());
+            int question = input.askInt("");
             if (question == 0) {
                 printHeader("Добавление новой задачи");
-                System.out.println("Введите название новой задачи:");
-                String name = scanner.nextLine();
+                String name = input.askStr("Введите название новой задачи:");
                 Item item = new Item();
                 item.setName(name);
                 tracker.add(item);
@@ -35,31 +35,26 @@ public class StartUI {
                 }
             } else if (question == 2) {
                 printHeader("Редактирование задачи");
-                System.out.println("Введите id задачи (чтобы узнать id задачи воспользуйтесь пунктом меню 1):");
-                int id = Integer.parseInt(scanner.nextLine());
-
-                    System.out.println("Введите новое название задачи:");
-                    String name = scanner.nextLine();
-                    Item item = new Item(id, name);
-                    if (tracker.replace(id, item)) {
-                        printHeader(String.format("Задача с id [%s] изменена", id));
-                    } else {
-                        printHeader(String.format("Не удалось изменить задачу с id [%s]", id));
-                    }
+                int id = input.askInt("Введите id задачи (чтобы узнать id задачи воспользуйтесь пунктом меню 1):");
+                String name = input.askStr("Введите новое название задачи:");
+                Item item = new Item(id, name);
+                if (tracker.replace(id, item)) {
+                    printHeader(String.format("Задача с id [%s] изменена", id));
+                } else {
+                    printHeader(String.format("Не удалось изменить задачу с id [%s]", id));
+                }
             } else if (question == 3) {
                 printHeader("Удаление задачи по id");
-                System.out.println("Введите id задачи для удаления:");
-                int id = Integer.parseInt(scanner.nextLine());
-                    if (tracker.delete(id)) {
-                        printHeader(String.format("Задача с id [%s] удалена", id));
-                    } else {
-                        printHeader(String.format("Не удалось удалить задачу с id [%s]", id));
-                    }
+                int id = input.askInt("Введите id задачи для удаления:");
+                if (tracker.delete(id)) {
+                    printHeader(String.format("Задача с id [%s] удалена", id));
+                } else {
+                    printHeader(String.format("Не удалось удалить задачу с id [%s]", id));
+                }
 
             } else if (question == 4) {
                 printHeader("Поиск задачи по id");
-                System.out.println("Введите id задачи для поиска:");
-                int id = Integer.parseInt(scanner.nextLine());
+                int id = input.askInt("Введите id задачи для поиска:");
                 Item item = tracker.findById(id);
                 if (item != null) {
                     printHeader(String.format("Задача найдена %s", item));
@@ -68,8 +63,7 @@ public class StartUI {
                 }
             } else if (question == 5) {
                 printHeader("Поиск задачи по названию");
-                System.out.println("Введите название задачи для поиска:");
-                String name = scanner.nextLine();
+                String name = input.askStr("Введите название задачи для поиска:");
                 Item[] items = tracker.findByName(name);
                 if (items.length > 0) {
                     printHeader("Список найденных задач:");
