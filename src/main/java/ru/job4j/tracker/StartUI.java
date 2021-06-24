@@ -5,12 +5,6 @@ import ru.job4j.tracker.input.Input;
 
 public class StartUI {
 
-    public static void main(String[] args) {
-        Input consoleInput = new ConsoleInput();
-        Tracker tracker = new Tracker();
-        new StartUI().init(consoleInput, tracker);
-    }
-
     public static void createItem(Input input, Tracker tracker){
         printHeader("Добавление новой задачи");
         String name = input.askStr("Введите название новой задачи:");
@@ -98,7 +92,7 @@ public class StartUI {
             } else if (question == 5) {
                 StartUI.findByName(input, tracker);
             } else if (question == 6) {
-                break;
+                run = false;
             } else {
                 printHeader("Номер не найден. Выберите номер из списка");
             }
@@ -122,4 +116,9 @@ public class StartUI {
         System.out.println("6. Выход из программы");
     }
 
+    public static void main(String[] args) {
+        Input consoleInput = new ConsoleInput();
+        Tracker tracker = new Tracker();
+        new StartUI().init(consoleInput, tracker);
+    }
 }
