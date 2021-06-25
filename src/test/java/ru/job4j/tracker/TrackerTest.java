@@ -21,17 +21,6 @@ public class TrackerTest {
     }
 
     @Test
-    public void whenAddItem(){
-        String[] questions = {"Test Item"};
-        Tracker tracker = new Tracker();
-        Input input = new StubInput(questions);
-        StartUI.createItem(input, tracker);
-        Item result = tracker.findById(1);
-        Item expected = new Item(questions[0]);
-        assertThat(result.getName(), is(expected.getName()));
-    }
-
-    @Test
     public void whenReplace() {
         Tracker tracker = new Tracker();
         Item bug = new Item();
