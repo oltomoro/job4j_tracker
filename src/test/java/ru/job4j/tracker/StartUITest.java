@@ -25,8 +25,9 @@ public class StartUITest {
         Tracker tracker = new Tracker();
         Item item = new Item("first name");
         tracker.add(item);
+        String itemId = "1";
         String newName = "new name";
-        String[] questions = {"1", newName};
+        String[] questions = {itemId, newName};
         Input input = new StubInput(questions);
         StartUI.editItem(input, tracker);
         String result = tracker.findById(1).getName();
@@ -38,24 +39,11 @@ public class StartUITest {
         Tracker tracker = new Tracker();
         Item item = new Item("Test Item");
         tracker.add(item);
-        String[] questions = {"1"};
+        String itemId = "1";
+        String[] questions = {itemId};
         Input input = new StubInput(questions);
         StartUI.deleteItem(input, tracker);
         Item result = tracker.findById(1);
         assertThat(result, is(nullValue()));
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
