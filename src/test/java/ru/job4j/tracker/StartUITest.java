@@ -29,7 +29,7 @@ public class StartUITest {
         String[] questions = {String.valueOf(item.getId()), newName};
         Input input = new StubInput(questions);
         StartUI.editItem(input, tracker);
-        String result = tracker.findById(1).getName();
+        String result = tracker.findById(item.getId()).getName();
         assertThat(result, is(newName));
     }
 
@@ -41,7 +41,7 @@ public class StartUITest {
         String[] questions = {String.valueOf(item.getId())};
         Input input = new StubInput(questions);
         StartUI.deleteItem(input, tracker);
-        Item result = tracker.findById(1);
+        Item result = tracker.findById(item.getId());
         assertThat(result, is(nullValue()));
     }
 }
