@@ -2,10 +2,14 @@ package ru.job4j.tracker;
 
 import ru.job4j.tracker.input.ConsoleInput;
 import ru.job4j.tracker.input.Input;
+import ru.job4j.tracker.strategy.UserAction;
+import ru.job4j.tracker.strategy.Context;
+import ru.job4j.tracker.strategy.impl.*;
 
 public class StartUI {
+    private UserAction[] menu;
 
-    public static void createItem(Input input, Tracker tracker){
+    public static void createItem(Input input, Tracker tracker) {
         printHeader("Добавление новой задачи");
         String name = input.askStr("Введите название новой задачи:");
         Item item = new Item();
@@ -14,7 +18,7 @@ public class StartUI {
         printHeader(String.format("Задача добавлена: %s", item));
     }
 
-    public static void showAll(Input input, Tracker tracker){
+    public static void showAll(Input input, Tracker tracker) {
         printHeader("Список найденных задач");
         Item[] items = tracker.findAll();
         if (items.length > 0) {
@@ -26,7 +30,7 @@ public class StartUI {
         }
     }
 
-    public static void editItem(Input input, Tracker tracker){
+    public static void editItem(Input input, Tracker tracker) {
         printHeader("Редактирование задачи");
         int id = input.askInt("Введите id задачи (чтобы узнать id задачи воспользуйтесь пунктом меню 1):");
         String name = input.askStr("Введите новое название задачи:");
@@ -38,7 +42,7 @@ public class StartUI {
         }
     }
 
-    public static void deleteItem(Input input, Tracker tracker){
+    public static void deleteItem(Input input, Tracker tracker) {
         printHeader("Удаление задачи по id");
         int id = input.askInt("Введите id задачи для удаления:");
         if (tracker.delete(id)) {
@@ -48,7 +52,7 @@ public class StartUI {
         }
     }
 
-    public static void findById(Input input, Tracker tracker){
+    public static void findById(Input input, Tracker tracker) {
         printHeader("Поиск задачи по id");
         int id = input.askInt("Введите id задачи для поиска:");
         Item item = tracker.findById(id);
@@ -59,7 +63,7 @@ public class StartUI {
         }
     }
 
-    public static void findByName(Input input, Tracker tracker){
+    public static void findByName(Input input, Tracker tracker) {
         printHeader("Поиск задачи по названию");
         String name = input.askStr("Введите название задачи для поиска:");
         Item[] items = tracker.findByName(name);
@@ -77,43 +81,37 @@ public class StartUI {
     public void init(Input input, Tracker tracker) {
         boolean run = true;
         while (run) {
-            this.showMenu();
-            int question = input.askInt("");
-            if (question == 0) {
-                StartUI.createItem(input, tracker);
-            } else if (question == 1) {
-                StartUI.showAll(input, tracker);
-            } else if (question == 2) {
-                StartUI.editItem(input, tracker);
-            } else if (question == 3) {
-                StartUI.deleteItem(input, tracker);
-            } else if (question == 4) {
-                StartUI.findById(input, tracker);
-            } else if (question == 5) {
-                StartUI.findByName(input, tracker);
-            } else if (question == 6) {
-                run = false;
-            } else {
-                printHeader("Номер не найден. Выберите номер из списка");
-            }
+            initMenu();
+            showMenu();
+            int select = input.askInt("");
+            Context context = new Context(input, tracker, menu[select]);
+            run = context.execAction();
         }
     }
 
-    private static void printHeader(String text) {
+    public static void printHeader(String text) {
         System.out.println("---------------------------------------------");
         System.out.println(text);
         System.out.println("---------------------------------------------");
     }
 
+    private void initMenu(){
+        menu = new UserAction[]{
+                new CreateItemImpl(),
+                new ShowAllImpl(),
+                new EditItemImpl(),
+                new DeleteItemImpl(),
+                new FindByIdImpl(),
+                new FindByNameImpl(),
+                new ExitImpl()
+        };
+    }
+
     private void showMenu() {
         System.out.println("Меню");
-        System.out.println("0. Создать задачу");
-        System.out.println("1. Показать все задачи");
-        System.out.println("2. Редактировать задачу");
-        System.out.println("3. Удалить задачу");
-        System.out.println("4. Поиск задачи по id");
-        System.out.println("5. Поиск задачи по названию");
-        System.out.println("6. Выход из программы");
+        for (int i = 0; i < menu.length; i++) {
+            System.out.println(i + ". " + menu[i].getName());
+        }
     }
 
     public static void main(String[] args) {
