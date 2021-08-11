@@ -5,8 +5,6 @@ import ru.job4j.tracker.Tracker;
 import ru.job4j.tracker.input.Input;
 import ru.job4j.tracker.strategy.UserAction;
 
-import static ru.job4j.tracker.StartUI.printHeader;
-
 public class ShowAllImpl implements UserAction {
     @Override
     public String getName() {
@@ -15,14 +13,14 @@ public class ShowAllImpl implements UserAction {
 
     @Override
     public boolean execute(Input input, Tracker tracker) {
-        printHeader("Список найденных задач");
+        System.out.println("======Список найденных задач======");
         Item[] items = tracker.findAll();
         if (items.length > 0) {
             for (Item item : items) {
                 System.out.println(item);
             }
         } else {
-            printHeader("Задачи не найдены");
+            System.out.println("======Задачи не найдены======");
         }
         return true;
     }

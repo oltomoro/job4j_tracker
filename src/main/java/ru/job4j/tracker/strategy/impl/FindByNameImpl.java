@@ -5,8 +5,6 @@ import ru.job4j.tracker.Tracker;
 import ru.job4j.tracker.input.Input;
 import ru.job4j.tracker.strategy.UserAction;
 
-import static ru.job4j.tracker.StartUI.printHeader;
-
 public class FindByNameImpl implements UserAction {
     @Override
     public String getName() {
@@ -15,16 +13,16 @@ public class FindByNameImpl implements UserAction {
 
     @Override
     public boolean execute(Input input, Tracker tracker) {
-        printHeader("Поиск задачи по названию");
+        System.out.println("======Поиск задачи по названию======");
         String name = input.askStr("Введите название задачи для поиска:");
         Item[] items = tracker.findByName(name);
         if (items.length > 0) {
-            printHeader("Список найденных задач:");
+            System.out.println("======Список найденных задач:======");
             for (Item item : items) {
                 System.out.println(item);
             }
         } else {
-            printHeader(String.format("Задача с названием [%s] не найдена", name));
+            System.out.println(String.format("======Задача с названием [%s] не найдена======", name));
         }
         return true;
     }
