@@ -1,19 +1,20 @@
 package ru.job4j.tracker.output;
 
 public class StubOutput implements Output{
-    private StringBuilder output = new StringBuilder();
+    private final StringBuilder buffer = new StringBuilder();
 
     @Override
     public void println(Object obj) {
         if (obj != null){
-            output.append(obj);
+            buffer.append(obj.toString());
         } else {
-            output.append(System.lineSeparator());
+            buffer.append("null");
         }
+        buffer.append(System.lineSeparator());
     }
 
     @Override
     public String toString() {
-        return output.toString();
+        return buffer.toString();
     }
 }

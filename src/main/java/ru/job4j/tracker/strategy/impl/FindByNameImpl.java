@@ -20,16 +20,16 @@ public class FindByNameImpl implements UserAction {
 
     @Override
     public boolean execute(Input input, Tracker tracker) {
-        System.out.println("======Поиск задачи по названию======");
+        out.println("======Поиск задачи по названию======");
         String name = input.askStr("Введите название задачи для поиска:");
         Item[] items = tracker.findByName(name);
         if (items.length > 0) {
-            System.out.println("======Список найденных задач:======");
+            out.println("======Список найденных задач======");
             for (Item item : items) {
-                System.out.println(item);
+                out.println(item);
             }
         } else {
-            System.out.println(String.format("======Задача с названием [%s] не найдена======", name));
+            out.println(String.format("======Задача с названием [%s] не найдена======", name));
         }
         return true;
     }

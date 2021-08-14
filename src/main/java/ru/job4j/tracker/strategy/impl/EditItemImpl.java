@@ -20,14 +20,14 @@ public class EditItemImpl implements UserAction {
 
     @Override
     public boolean execute(Input input, Tracker tracker) {
-        System.out.println("======Редактирование задачи======");
+        out.println("======Редактирование задачи======");
         int id = input.askInt("Введите id задачи (чтобы узнать id задачи воспользуйтесь пунктом меню 1):");
         String name = input.askStr("Введите новое название задачи:");
         Item item = new Item(id, name);
         if (tracker.replace(id, item)) {
-            System.out.println(String.format("======Задача с id [%s] изменена======", id));
+            out.println(String.format("======Задача с id [%s] изменена======", id));
         } else {
-            System.out.println(String.format("======Не удалось изменить задачу с id [%s]======", id));
+            out.println(String.format("======Не удалось изменить задачу с id [%s]======", id));
         }
         return true;
     }

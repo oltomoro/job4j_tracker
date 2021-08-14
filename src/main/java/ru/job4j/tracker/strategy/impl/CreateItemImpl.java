@@ -20,12 +20,12 @@ public class CreateItemImpl implements UserAction {
 
     @Override
     public boolean execute(Input input, Tracker tracker) {
-        System.out.println("======Добавление новой задачи======");
+        out.println("======Добавление новой задачи======");
         String name = input.askStr("Введите название новой задачи:");
         Item item = new Item();
         item.setName(name);
         tracker.add(item);
-        System.out.println(String.format("======Задача добавлена: %s======", item));
+        out.println(String.format("======Задача добавлена: %s======", item));
         return true;
     }
 }

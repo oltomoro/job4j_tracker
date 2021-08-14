@@ -20,13 +20,13 @@ public class FindByIdImpl implements UserAction {
 
     @Override
     public boolean execute(Input input, Tracker tracker) {
-        System.out.println("======Поиск задачи по id======");
+        out.println("======Поиск задачи по id======");
         int id = input.askInt("Введите id задачи для поиска:");
         Item item = tracker.findById(id);
         if (item != null) {
-            System.out.println(String.format("======Задача найдена %s======", item));
+            out.println(String.format("======Задача найдена %s======", item));
         } else {
-            System.out.println(String.format("======Задача с id [%s] не найдена======", id));
+            out.println(String.format("======Задача с id [%s] не найдена======", id));
         }
         return true;
     }
