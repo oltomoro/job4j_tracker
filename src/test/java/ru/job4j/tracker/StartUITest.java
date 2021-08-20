@@ -29,7 +29,7 @@ public class StartUITest {
                         "0. Показать все задачи" + System.lineSeparator() +
                         "1. Выход из программы" + System.lineSeparator() +
                         "======Список найденных задач======" + System.lineSeparator() +
-                        "Item{id=" + item.getId() + ", name='" + item.getName() + "', created=" + item.getCreated() + "}" + System.lineSeparator() +
+                        item + System.lineSeparator() +
                         "Меню" + System.lineSeparator() +
                         "0. Показать все задачи" + System.lineSeparator() +
                         "1. Выход из программы" + System.lineSeparator())
@@ -54,7 +54,7 @@ public class StartUITest {
                         "1. Выход из программы" + System.lineSeparator() +
                         "======Поиск задачи по названию======" + System.lineSeparator() +
                         "======Список найденных задач======" + System.lineSeparator() +
-                        "Item{id=" + item.getId() + ", name='" + item.getName() + "', created=" + item.getCreated() + "}" + System.lineSeparator() +
+                        item + System.lineSeparator() +
                         "Меню" + System.lineSeparator() +
                         "0. Поиск задачи по названию" + System.lineSeparator() +
                         "1. Выход из программы" + System.lineSeparator())
@@ -78,7 +78,7 @@ public class StartUITest {
                         "0. Поиск задачи по id" + System.lineSeparator() +
                         "1. Выход из программы" + System.lineSeparator() +
                         "======Поиск задачи по id======" + System.lineSeparator() +
-                        "======Задача найдена Item{id=" + item.getId() + ", name='" + item.getName() + "', created=" + item.getCreated() + "}======" + System.lineSeparator() +
+                        "======Задача найдена " + item + "======" + System.lineSeparator() +
                         "Меню" + System.lineSeparator() +
                         "0. Поиск задачи по id" + System.lineSeparator() +
                         "1. Выход из программы" + System.lineSeparator())
