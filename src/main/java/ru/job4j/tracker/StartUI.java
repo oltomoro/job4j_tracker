@@ -2,6 +2,7 @@ package ru.job4j.tracker;
 
 import ru.job4j.tracker.input.ConsoleInput;
 import ru.job4j.tracker.input.Input;
+import ru.job4j.tracker.input.ValidateInput;
 import ru.job4j.tracker.output.ConsoleOutput;
 import ru.job4j.tracker.output.Output;
 import ru.job4j.tracker.strategy.UserAction;
@@ -19,6 +20,10 @@ public class StartUI {
         while (run) {
             showMenu(actions);
             int select = input.askInt("Select: ");
+            if (select < 0 || select >= actions.length) {
+                System.out.println("Wrong input, you can select: 0.." + (actions.length - 1));
+                continue;
+            }
             UserAction action = actions[select];
             run = action.execute(input, tracker);
         }
@@ -33,7 +38,7 @@ public class StartUI {
 
     public static void main(String[] args) {
         Output output = new ConsoleOutput();
-        Input consoleInput = new ConsoleInput();
+        Input consoleInput = new ValidateInput();
         Tracker tracker = new Tracker();
         UserAction[] actions = new UserAction[]{
                 new CreateItemImpl(out),
