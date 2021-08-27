@@ -6,6 +6,7 @@ public class UserStore {
         for (User u : users) {
             if (u.getUsername().equals(login)) {
                 user = u;
+                break;
             }
         }
         if (user == null) {
@@ -18,7 +19,7 @@ public class UserStore {
         if (!user.isValid() || user.getUsername().length() < 3){
             throw new UserInvalidException(String.format("User [%s] not valid", user.getUsername()));
         }
-        return false;
+        return true;
     }
 
     public static void main(String[] args) {
