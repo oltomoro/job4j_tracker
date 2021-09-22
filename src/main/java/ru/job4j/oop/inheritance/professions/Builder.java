@@ -7,7 +7,7 @@ public class Builder extends Engineer {
         super(name, surrname, education, birthday);
     }
 
-    public Building build(){
+    public Building build() {
         return null;
     }
 }

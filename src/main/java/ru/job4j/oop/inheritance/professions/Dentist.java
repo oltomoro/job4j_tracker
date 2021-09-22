@@ -7,7 +7,7 @@ public class Dentist extends Doctor {
         super(name, surrname, education, birthday);
     }
 
-    public boolean removeTooth(Pacient pacient){
+    public boolean removeTooth(Pacient pacient) {
         return false;
     }
 }

@@ -1,10 +1,10 @@
 package ru.job4j.tracker.input;
 
-public class StubInput implements Input{
+public class StubInput implements Input {
     private String[] questions;
     private int position;
 
-    public StubInput(String[] questions){
+    public StubInput(String[] questions) {
         this.questions = questions;
     }
 

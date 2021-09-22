@@ -7,7 +7,7 @@ public class Surgeon extends Doctor {
         super(name, surrname, education, birthday);
     }
 
-    public void operate(Pacient pacient){
+    public void operate(Pacient pacient) {
 
     }
 }

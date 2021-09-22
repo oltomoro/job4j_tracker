@@ -10,7 +10,7 @@ public class Programmer extends Engineer {
         this.isDrunk = isDrunk;
     }
 
-    public void developApplication(Application application){
+    public void developApplication(Application application) {
 
     }
 
