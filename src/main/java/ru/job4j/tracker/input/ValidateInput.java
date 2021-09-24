@@ -3,8 +3,8 @@ package ru.job4j.tracker.input;
 import ru.job4j.tracker.output.Output;
 
 public class ValidateInput implements Input {
-    Output out;
-    Input in;
+    private Output out;
+    private Input in;
 
     public ValidateInput(Output out, Input in) {
         this.out = out;
@@ -13,7 +13,7 @@ public class ValidateInput implements Input {
 
     @Override
     public String askStr(String question) {
-        return question;
+        return in.askStr(question);
     }
 
     @Override
