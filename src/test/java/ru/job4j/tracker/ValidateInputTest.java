@@ -28,17 +28,21 @@ public class ValidateInputTest {
     public void whenMultipleValidInput() {
         Output out = new StubOutput();
         String[] expected = {"0", "1", "2"};
+        String expected1 = "0";
+        String expected2 = "1";
+        String expected3 = "2";
         Input in = new StubInput(expected);
         ValidateInput input = new ValidateInput(out, in);
-        String[] result = new String[3];
-        result[0] = String.valueOf(input.askInt("Enter menu:"));
-        result[1] = String.valueOf(input.askInt("Enter menu:"));
-        result[2] = String.valueOf(input.askInt("Enter menu:"));
-        assertThat(expected, arrayContaining(result));
+        String result = input.askStr("Enter menu:");
+        assertThat(expected1, is(result));
+        result = input.askStr("Enter menu:");
+        assertThat(expected2, is(result));
+        result = input.askStr("Enter menu:");
+        assertThat(expected3, is(result));
     }
 
     @Test
-    public void whenInvalidInput() {
+    public void whenInvalidInputNegativeNumber() {
         Output out = new StubOutput();
         Input in = new StubInput(
                 new String[]{"-1"}
@@ -46,5 +50,16 @@ public class ValidateInputTest {
         ValidateInput input = new ValidateInput(out, in);
         int selected = input.askInt("Enter menu:");
         assertThat(selected, is(-1));
+    }
+
+    @Test
+    public void whenInvalidInputStringNumber() {
+        Output out = new StubOutput();
+        Input in = new StubInput(
+                new String[] {"one", "1"}
+        );
+        ValidateInput input = new ValidateInput(out, in);
+        int selected = input.askInt("Enter menu:");
+        assertThat(selected, is(1));
     }
 }
