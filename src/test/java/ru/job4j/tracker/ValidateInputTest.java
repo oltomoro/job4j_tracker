@@ -7,8 +7,6 @@ import ru.job4j.tracker.input.ValidateInput;
 import ru.job4j.tracker.output.Output;
 import ru.job4j.tracker.output.StubOutput;
 
-import static org.hamcrest.Matchers.contains;
-import static org.hamcrest.collection.IsArrayContainingInOrder.arrayContaining;
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
 
