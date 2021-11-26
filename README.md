@@ -1,2 +1,8 @@
 # job4j_tracker
-Обучающий проект Tracker
+Обучающий тестовый проект Tracker
+
+Используемые технологии:
+- java 8
+- maven
+- junit
+- hamcrest

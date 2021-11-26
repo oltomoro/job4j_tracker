@@ -10,6 +10,6 @@ public class BallStory {
         stepan.tryEat(kolobok);
         anatoly.tryEat(kolobok);
         alisa.tryEat(kolobok);
-        kolobok.tryEat(kolobok); //;)
+        kolobok.tryEat(kolobok);
     }
 }
